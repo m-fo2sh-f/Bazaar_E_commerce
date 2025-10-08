@@ -6,6 +6,7 @@ import { Box, Stack, useTheme, Typography, Rating, Checkbox, styled, Button } fr
 import ProductCard from '../../components/ProductCard'
 import Description from './Description';
 import { useCart } from '../../context/useCart';
+import { getImageUrl } from '../../getImageUrl';
 
 
 export default function Product() {
@@ -15,7 +16,6 @@ export default function Product() {
     const [type, setType] = useState('type1')
     const product = useSelector((state) => state.items.selectedProduct);
     const { setNumberOfItemsInCart } = useCart();
-
 
     const { id } = useParams();
     useEffect(() => {
@@ -84,7 +84,7 @@ export default function Product() {
                     <Box sx={{ flexGrow: 1, width: '50%', textAlign: 'center' }}>
                         <Box
                             component="img"
-                            src={product.img}
+                            src={getImageUrl(`../../assets${product.img}`)}
                             loading="lazy"
                             alt={product.name}
                             sx={{
