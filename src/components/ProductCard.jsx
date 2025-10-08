@@ -7,10 +7,21 @@ import { useCart } from '../context/useCart';
 import { getImageUrl } from '../getImageUrl';
 
 export default function ProductCard({ item, view = 'column' }) {
+
+    // التعليمات الجديدة للحارس
+    // 1. شوف المنتج اللي جاي ده سليم ولا لأ
+
+
+
     const theme = useTheme()
     const navigate = useNavigate()
     const { setNumberOfItemsInCart } = useCart();
-
+    if (!item || !item.img) {
+        // 2. لو بايظ، سجل بياناته في الـ console عشان نعرفه
+        console.error("منتج بايظ بيحاول يدخل! بياناته أهي:", item);
+        // 3. امنعه من الدخول ومتعرضش أي حاجة مكانه
+        return null;
+    }
     const addToCart = (product) => {
         const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
         const productExists = storedCart.find(item => item.id === product.id);
