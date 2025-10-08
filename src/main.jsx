@@ -12,11 +12,9 @@ createRoot(document.getElementById("root")).render(
   <BrowserRouter basename="/Bazaar_E_commerce">
     <ThemeProvider theme={theme}>
       <Provider store={Store}>
-        <BrowserRouter>
-          <StrictMode>
-            <App />
-          </StrictMode>
-        </BrowserRouter>
+        <StrictMode>
+          <App />
+        </StrictMode>
       </Provider>
     </ThemeProvider >
   </BrowserRouter>
