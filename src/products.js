@@ -1,3 +1,14 @@
+import p1 from './assets/products/airpod-1.webp'
+import p2 from './assets/products/bag-1.webp'
+import p3 from './assets/products/product-10.webp'
+import p4 from './assets/products/product-10.webp'
+import p9 from './assets/products/product-12.webp'
+import p5 from './assets/products/product-13.webp'
+import p6 from './assets/products/product-3.webp'
+import p7 from './assets/products/product-4.webp'
+import p8 from './assets/products/product-7.webp'
+
+
 export const products = [
     {
         "id": 1,
@@ -9,7 +20,7 @@ export const products = [
         "rate": 4.8,
         "stock": 200,
         "soldby": "Apple",
-        "img": "/products/airpod-1.webp",
+        "img": p1,
         "discountPercent": 10,
         "discountedPrice": 225
     },
@@ -23,7 +34,7 @@ export const products = [
         "rate": 4.3,
         "stock": 90,
         "soldby": "FashionHub",
-        "img": "/products/bag-1.webp",
+        "img": p2,
         "discountPercent": 15,
         "discountedPrice": 127.5
     },
@@ -37,7 +48,7 @@ export const products = [
         "rate": 4.5,
         "stock": 130,
         "soldby": "Sony",
-        "img": "/products/speaker-5.webp",
+        "img": p3,
         "discountPercent": 10,
         "discountedPrice": 108
     },
@@ -51,7 +62,7 @@ export const products = [
         "rate": 4.0,
         "stock": 150,
         "soldby": "HomeMart",
-        "img": "/products/product-3.webp",
+        "img": p4,
         "discountPercent": 8,
         "discountedPrice": 73.6
     },
@@ -65,7 +76,7 @@ export const products = [
         "rate": 4.2,
         "stock": 60,
         "soldby": "Decathlon",
-        "img": "/products/product-4.webp",
+        "img": p5,
         "discountPercent": 12,
         "discountedPrice": 176
     },
@@ -79,7 +90,7 @@ export const products = [
         "rate": 4.6,
         "stock": 75,
         "soldby": "Elnasr",
-        "img": "/products/product-7.webp",
+        "img": p6,
         "discountPercent": 10,
         "discountedPrice": 89.1
     },
@@ -93,7 +104,7 @@ export const products = [
         "rate": 4.7,
         "stock": 40,
         "soldby": "Samsung",
-        "img": "/products/product-10.webp",
+        "img": p8,
         "discountPercent": 10,
         "discountedPrice": 450
     },
@@ -107,7 +118,7 @@ export const products = [
         "rate": 4.1,
         "stock": 210,
         "soldby": "Sephora",
-        "img": "/products/product-12.webp",
+        "img": p7,
         "discountPercent": 20,
         "discountedPrice": 48
     },
@@ -121,7 +132,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p9,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -135,7 +146,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p5,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -149,7 +160,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p8,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -163,7 +174,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p9,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -177,7 +188,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p1,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -191,7 +202,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p5,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -205,7 +216,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p8,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -219,7 +230,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p9,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
@@ -233,7 +244,7 @@ export const products = [
         "rate": 4.4,
         "stock": 55,
         "soldby": "Zara",
-        "img": "/products/product-13.webp",
+        "img": p3,
         "discountPercent": 15,
         "discountedPrice": 93.5
     },
