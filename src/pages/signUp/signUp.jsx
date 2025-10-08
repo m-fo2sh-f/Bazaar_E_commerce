@@ -1,0 +1,361 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import CssBaseline from '@mui/material/CssBaseline';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Divider from '@mui/material/Divider';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import MuiCard from '@mui/material/Card';
+import { alpha, styled, useTheme } from '@mui/material/styles';
+import ForgotPassword from './ForgotPassword';
+// import AppTheme from '../shared-theme/AppTheme';
+// import ColorModeSelect from '../shared-theme/ColorModeSelect';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+import { useNavigate } from 'react-router-dom';
+
+const Card = styled(MuiCard)(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignSelf: 'center',
+    width: '100%',
+    padding: theme.spacing(4),
+    gap: theme.spacing(2),
+    margin: 'auto',
+    [theme.breakpoints.up('sm')]: {
+        maxWidth: '450px',
+    },
+    boxShadow:
+        'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
+    ...theme.applyStyles('dark', {
+        boxShadow:
+            'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
+    }),
+}));
+
+const SignInContainer = styled(Stack)(({ theme }) => ({
+    height: 'auto',
+    minHeight: '100%',
+    padding: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(4),
+    },
+    '&::before': {
+        content: '""',
+        display: 'block',
+        position: 'absolute',
+        zIndex: -1,
+        inset: 0,
+        backgroundImage:
+            'radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))',
+        backgroundRepeat: 'no-repeat',
+        ...theme.applyStyles('dark', {
+            backgroundImage:
+                'radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))',
+        }),
+    },
+}));
+
+export default function SignUp() {
+    const theme = useTheme()
+    const navigate = useNavigate()
+    const [fullNameError, setFullNameError] = React.useState(false);
+    const [fullNameErrorMessage, setFullNameErrorMessage] = React.useState('');
+
+    const [passwordError, setPasswordError] = React.useState(false);
+    const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
+
+    const [emailError, setEmailError] = React.useState(false);
+    const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
+
+    const [rePasswordError, setRePasswordError] = React.useState(false);
+    const [rePasswordErrorMessage, setRePasswordErrorMessage] = React.useState('');
+
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleSubmit = (event) => {
+        if (emailError || passwordError || fullNameError || rePasswordError) {
+            event.preventDefault();
+            return;
+        }
+        const data = new FormData(event.currentTarget);
+        console.log({
+            email: data.get('email'),
+            password: data.get('password'),
+        });
+    };
+
+    const validateInputs = () => {
+        const fullName = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const rePassword = document.getElementById('rePassword');
+
+        let isValid = true;
+
+        if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+            setEmailError(true);
+            setEmailErrorMessage('Please enter a valid email address.');
+            isValid = false;
+        } else {
+            setEmailError(false);
+            setEmailErrorMessage('');
+        }
+
+        if (!fullName.value || fullName.value.length < 6) {
+            setFullNameError(true);
+            setFullNameErrorMessage('Nmae is Reqired');
+            isValid = false;
+        } else {
+            setPasswordError(false);
+            setPasswordErrorMessage('');
+        }
+
+        if (!password.value || password.value.length < 6) {
+            setPasswordError(true);
+            setPasswordErrorMessage('Password must be at least 6 characters long.');
+            isValid = false;
+        } else {
+            setPasswordError(false);
+            setPasswordErrorMessage('');
+        }
+
+        if (!rePassword.value || rePassword.value.length < 6) {
+            setRePasswordError(true);
+            setRePasswordErrorMessage('Password must be at least 6 characters long.');
+            isValid = false;
+        } else {
+            setPasswordError(false);
+            setPasswordErrorMessage('');
+        }
+
+        return isValid;
+    };
+
+    return (
+        <>
+            <CssBaseline enableColorScheme />
+            <SignInContainer direction="column" justifyContent="space-between" >
+                {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
+                <Card variant="outlined" sx={{ borderRadius: '15px' }}>
+
+                    <Typography
+                        component="h1"
+                        variant="h4"
+                        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)', textAlign: 'center' }}
+                    >
+                        Sign Up
+                    </Typography>
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit}
+                        noValidate
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            width: '100%',
+                            gap: 2,
+                        }}
+                    >
+
+                        <FormControl>
+                            <FormLabel htmlFor="password" sx={{ color: theme.palette.secondary.main, }} >FullName</FormLabel>
+
+                            <TextField
+                                error={fullNameError}
+                                helperText={fullNameErrorMessage}
+                                name="fullName"
+                                placeholder="••••••"
+                                type="password"
+                                id="fullName"
+                                autoComplete="current-password"
+                                autoFocus
+                                required
+                                fullWidth
+                                variant="outlined"
+                                color={fullNameError ? 'error' : 'primary'}
+                                sx={{
+
+                                    '& .MuiInputBase-root': {
+                                        height: '40px',
+                                        borderRadius: '10px',
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        paddingTop: '16px',
+                                    }
+                                }}
+                                inputProps={{
+                                    style: {
+
+                                        textAlign: 'left',
+                                    }
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel htmlFor="email" sx={{ color: theme.palette.secondary.main, }} >Email</FormLabel>
+                            <TextField
+                                error={emailError}
+                                helperText={emailErrorMessage}
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                autoComplete="email"
+                                autoFocus
+                                required
+                                fullWidth
+                                variant="outlined"
+                                color={emailError ? 'error' : 'primary'}
+                                sx={{
+                                    '& .MuiInputBase-root': {
+                                        height: '40px',
+                                        borderRadius: '10px',
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        paddingTop: '16px',
+                                    }
+                                }}
+                                inputProps={{
+                                    style: {
+                                        textAlign: 'left',
+                                    }
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel htmlFor="password" sx={{ color: theme.palette.secondary.main, }} >Password</FormLabel>
+
+                            <TextField
+                                error={passwordError}
+                                helperText={passwordErrorMessage}
+                                name="password"
+                                placeholder="••••••"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                                autoFocus
+                                required
+                                fullWidth
+                                variant="outlined"
+                                color={passwordError ? 'error' : 'primary'}
+                                sx={{
+
+                                    '& .MuiInputBase-root': {
+                                        height: '40px',
+                                        borderRadius: '10px',
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        paddingTop: '16px',
+                                    }
+                                }}
+                                inputProps={{
+                                    style: {
+
+                                        textAlign: 'left',
+                                    }
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel htmlFor="password" sx={{ color: theme.palette.secondary.main, }} >RePassword</FormLabel>
+
+                            <TextField
+                                error={rePasswordError}
+                                helperText={rePasswordErrorMessage}
+                                name="rePassword"
+                                placeholder="••••••"
+                                type="password"
+                                id="rePassword"
+                                autoComplete="current-password"
+                                autoFocus
+                                required
+                                fullWidth
+                                variant="outlined"
+                                color={rePasswordError ? 'error' : 'primary'}
+                                sx={{
+
+                                    '& .MuiInputBase-root': {
+                                        height: '40px',
+                                        borderRadius: '10px',
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        paddingTop: '16px',
+                                    }
+                                }}
+                                inputProps={{
+                                    style: {
+
+                                        textAlign: 'left',
+                                    }
+                                }}
+                            />
+                        </FormControl>
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="By signing up, you agree to Terms & Condition"
+                        />
+                        <ForgotPassword open={open} handleClose={handleClose} />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            onClick={validateInputs}
+                            sx={{ color: theme.palette.primary.main, bgcolor: theme.palette.secondary.main, borderRadius: '10px', height: '40px' }}
+                        >
+                            Login
+                        </Button>
+
+                    </Box>
+                    <Divider>or</Divider>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            onClick={() => alert('Sign in with Google')}
+                            startIcon={<GoogleIcon />}
+                            sx={{ color: theme.palette.secondary.main, borderColor: alpha(theme.palette.secondary.light, .5), borderRadius: '10px' }}
+                        >
+                            Sign in with Google
+                        </Button>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            onClick={() => alert('Sign in with Facebook')}
+                            startIcon={<FacebookIcon />}
+                            sx={{ color: theme.palette.secondary.main, borderColor: alpha(theme.palette.secondary.light, .5), borderRadius: '10px' }}
+                        >
+                            Sign in with Facebook
+                        </Button>
+                        <Typography sx={{ textAlign: 'center', color: alpha(theme.palette.secondary.main, .5) }}>
+                            Already have an account?
+                            <Link
+                                onClick={() => { navigate(`/login`) }}
+                                variant="body2"
+                                sx={{ alignSelf: 'center', color: theme.palette.secondary.main, cursor: 'pointer' }}
+                            >
+                                LogIn
+                            </Link>
+                        </Typography>
+                    </Box>
+                </Card>
+            </SignInContainer>
+
+        </>
+
+    );
+}

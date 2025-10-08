@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: white;
+}
+
+.slider-image {
+    width: 75%;
+    height: 75%;
+}
+
+.swiper-pagination-bullet {
+    background: gray;
+    /* لون الدوائر */
+    width: 7px !important;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: #1F2937 !important;
+    /* لون الدائرة المختارة */
+    opacity: 1;
+    scale: 1.2;
+    border-radius: 20px !important;
+    width: 20px !important;
+}
+
+.MuiStepConnector-line,
+.MuiStepConnector-lineHorizontal,
+.css-14ncu80-MuiStepConnector-line,
+.MuiStepConnector-lineHorizontal {
+
+    border: 5px solid;
+
+}
+
+.cover {
+    height: 428px;
+}
+
+
+@media (max-width: 1200px) {
+    .cover {
+        height: 348px;
+    }
+}
+
+@media (max-width: 900px) {
+    .slider-image {
+        width: 50%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .slider-image {
+        width: 80%;
+        height: 100%;
+    }
+}
