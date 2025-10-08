@@ -9,13 +9,15 @@ import { theme } from "./theme.jsx";
 import { Store } from './app/Store'
 import { Provider } from 'react-redux'
 createRoot(document.getElementById("root")).render(
-  <ThemeProvider theme={theme}>
-    <Provider store={Store}>
-      <BrowserRouter>
-        <StrictMode>
-          <App />
-        </StrictMode>
-      </BrowserRouter>
-    </Provider>
-  </ThemeProvider >
+  <BrowserRouter basename="/Bazaar_E_commerce">
+    <ThemeProvider theme={theme}>
+      <Provider store={Store}>
+        <BrowserRouter>
+          <StrictMode>
+            <App />
+          </StrictMode>
+        </BrowserRouter>
+      </Provider>
+    </ThemeProvider >
+  </BrowserRouter>
 );
