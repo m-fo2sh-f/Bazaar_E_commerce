@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import AddIcon from '@mui/icons-material/Add';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useCart } from '../context/useCart';
+import { getImageUrl } from '../getImageUrl';
 
 export default function ProductCard({ item, view = 'column' }) {
     const theme = useTheme()
@@ -44,7 +45,7 @@ export default function ProductCard({ item, view = 'column' }) {
 
                     <Box
                         component="img"
-                        src={item.img}
+                        src={getImageUrl(item.img)}
                         loading="lazy"
                         alt={item.name}
                         sx={{
